@@ -1,8 +1,23 @@
-const Usuario = () => {
+import {Link, Outlet} from 'react-router-dom'
+
+const Usuario = ({ usuarios }) => {
     return (
-    <main style={{ paddings: '20px' }}>
-    <h4>Página Usuarios</h4>
-    </main>
+        <> 
+            <h4>Página Usuarios</h4> 
+            <ul> 
+                {usuarios.map( 
+                    (usuario) => ( 
+                        <li key={usuario.id}> 
+                            <Link to={`/usuario/${usuario.id}`} > 
+                                {usuario.nombre} 
+                            </Link> 
+                        </li> 
+                    ) 
+                )} 
+            </ul> 
+            <Outlet /> 
+        </>
     );
-    };
-    export default Usuario;
+};
+
+export default Usuario;
